@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Florian Weichert</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  </head>
+  <body>
+    <header id="header" class="nsticky">
+      <div id="lander">
+        <div id="cutout" class="rellax" data-rellax-speed="3"></div>
+        <img id="logo" src="images/logo.svg" class="rellax" data-rellax-speed="6">
+      </div>
+      <nav>
+        <a class="img" href="#">
+          <img img src="images/logo.svg">
+        </a>
+        <a href="#webdesign">Webdesign</a>
+        <a href="#photography">Fotografie</a>
+      </nav>
+    </header>
+    <section id="photography">
+      <img src="images/fotografie_2.jpg" class="rellax" data-rellax-speed="-3" data-rellax-percentage="0.5">
+      <div class="divider"></div>
+      <div class="text rellax" data-rellax-speed="3" data-rellax-percentage="0.5">
+        <h2>Fotografie</h2>
+        <p>
+          Text über mich selbst... Kann ich garnicht...<br>
+          Bla Bla Bla xD
+        </p>
+      </div>
+    </section>
+    <section id="photography_gallary">
+      <img src="images/fotografie_1.jpg">
+      <img src="images/fotografie_3.jpg">
+      <img src="images/fotografie_4.jpg">
+      <img src="images/fotografie_5.jpg">
+    </section>
+    <section id="webdesign">
+      <div class="text rellax" data-rellax-speed="3" data-rellax-percentage="0.5">
+        <h2>Webdesign</h2>
+        <p>
+          Text über mich selbst... Kann ich garnicht...<br>
+          Bla Bla Bla xD
+        </p>
+      </div>
+      <div class="divider"></div>
+      <img src="images/webimage.svg" class="rellax" data-rellax-speed="-3" data-rellax-percentage="0.5">
+    </section>
+  </body>
+  <script type="text/javascript" src="rellax.min.js"></script>
+  <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+  <script>
+
+    var rellax = new Rellax('.rellax');
+    jQuery(document).ready(function($) {
+        function sticky() {
+            var currPos = $(window).scrollTop();
+            var navHeight = $('nav').height();
+            var headerHeight = $('header').height();
+
+            var beginPos = headerHeight - (navHeight*7);
+            var endPos = headerHeight;
+
+            var endVal = endPos - beginPos;
+            var currVal = currPos - beginPos;
+            var percentage = limit(currVal / endVal, 0, 1);
+            percentage = EasingFunctions.easeOutCubic(percentage);
+
+            //$('nav > .img > img').removeAttr("style");
+            $('nav > .img > img').css('opacity', percentage);
+            $('nav > .img > img').css('transform', 'translateY(' + (1-percentage)*-150 + 'px) scale(' + (percentage/2+0.5) + ')');
+        }
+        $(window).scroll(sticky);
+        sticky();
+    });
+
+    function limit(x, min, max) {
+      if (x > max) {
+        return max;
+      } else if (x < min) {
+        return min;
+      } else {
+        return x;
+      }
+    }
+
+    EasingFunctions = {
+      // no easing, no acceleration
+      linear: function (t) { return t },
+      // accelerating from zero velocity
+      easeInQuad: function (t) { return t*t },
+      // decelerating to zero velocity
+      easeOutQuad: function (t) { return t*(2-t) },
+      // acceleration until halfway, then deceleration
+      easeInOutQuad: function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t },
+      // accelerating from zero velocity
+      easeInCubic: function (t) { return t*t*t },
+      // decelerating to zero velocity
+      easeOutCubic: function (t) { return (--t)*t*t+1 },
+      // acceleration until halfway, then deceleration
+      easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+      // accelerating from zero velocity
+      easeInQuart: function (t) { return t*t*t*t },
+      // decelerating to zero velocity
+      easeOutQuart: function (t) { return 1-(--t)*t*t*t },
+      // acceleration until halfway, then deceleration
+      easeInOutQuart: function (t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
+      // accelerating from zero velocity
+      easeInQuint: function (t) { return t*t*t*t*t },
+      // decelerating to zero velocity
+      easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
+      // acceleration until halfway, then deceleration
+      easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
+    }
+
+  </script>
+</html>

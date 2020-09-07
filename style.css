@@ -3,166 +3,90 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
 }
 
-a {
-  text-decoration: none;
+body {
+  /*background-image: url("images/bg-pattern.svg");*/
+  margin-bottom: 30vw;
 }
 
-p {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
-}
-
-header {
-  height: 100vh;
-  position: sticky;
-  z-index: 100;
-  top: calc(-100vh + 70px);
-}
-
-header > #lander {
-  height: calc(100vh);
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 100%;
-}
-
-header > #lander #cutout {
-  background-color: #E3E3E3;
-  grid-column: 1;
-  grid-row: 1;
-  -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
-  clip-path: polygon(0 0, 0% 100%, 100% 0);
-  z-index: 2;
-}
-
-header > #lander > #logo {
-  width: 33%;
-  grid-column: 1;
-  grid-row: 1;
-  align-self: center;
-  justify-self: center;
-  z-index: 3;
-  filter: drop-shadow(0 0 50px rgba(0,0,0,0.2));
-}
-
-header > nav {
-  margin-top: -71px;
-  height: 70px;
-  z-index: 1 !important;
+.wrapper {
+  margin: 5vw;
   display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-around;
-  background-color: white;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
-  opacity: 0.985;
-  overflow: hidden;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 5vw;
 }
 
-header > nav > a {
-  color: #263248;
-  font-size: 1.5vw;
-  transition-duration: 0.6s;
+.wrapper > .desc > h1 {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 5em;
+  margin-top: 0.5em;
+  color: #333;
 }
 
-header > nav > a:hover {
-  color: #C73226;
-  transition-duration: 0.3s;
-  transform: scale(1.1);
+.wrapper > .desc > p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
 
-header > nav > .img {
-  display: block;
-  flex-shrink: 0;
-  position: absolute;
-  left: 50px;
-}
-
-header > nav > .img > img {
-  height: 35px;
-}
-
-#photography {
-  height: 150vh;
+.wrapper > .desc > a {
+  text-align: left;
   width: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,1) 33%, rgba(38,50,72,1) 100%);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.floater {
+  width: 100vw;
+  height: 30vw;
+  position: fixed;
+  bottom: 0;
+  background-color: #EEE;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0 0 15vw 0 rgba(0, 0, 0, 0.1);
 }
 
-#photography > img {
-  width: 33%;
+.floater > p {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 3em;
 }
 
-section > .divider {
-  height: 200px;
-  width: 1px;
-  background-color: white;
-}
+@media only screen and (min-width: 999px) {
 
-#photography > .text {
-  width: 33%;
-  margin-right: 10%;
-  color: white;
-  text-align: justify;
-  z-index: 0;
-}
+  body {
+    margin-bottom: 5vw;
+  }
 
-#photography_gallary {
-  top: -20px;
-  position: relative;
-  width: 100%;
-  padding: 4vw;
-  box-sizing: border-box;
-  border-radius: 20px;
-  background-color: grey;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4vw;
-  background-color: white;
-}
+  .wrapper > .desc > h1 {
+    font-size: 3.5em;
+  }
 
-#photography_gallary > img {
-  width: 100%;
-  border-radius: 5px;
-}
+  .wrapper {
+    margin: 4vw 16vw;
+    flex-wrap: nowrap;
+  }
 
-#webdesign {
-  top: -20px;
-  position: relative;
-  height: 150vh;
-  width: 100%;
-  background: linear-gradient(90deg, rgba(64,33,0,1) 0%, rgba(0,0,0,1) 66%);
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-}
+  .wrapper > img {
+    width: 30vw;
+  }
 
-#webdesign > img {
-  width: 33%;
-}
+  .wrapper > .desc {
+    margin-left: 4vw;
+  }
 
-#webdesign > .text {
-  width: 33%;
-  margin-left: 10%;
-  color: white;
-  text-align: justify;
-  z-index: 0;
+  .floater {
+    height: 5vw;
+  }
+
 }
