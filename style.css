@@ -22,6 +22,10 @@ body {
   padding-bottom: 5vw;
 }
 
+.wrapper > img {
+  border-radius: 3vw;
+}
+
 .wrapper > .desc > h1 {
   font-family: 'Architects Daughter', cursive;
   font-size: 5em;
@@ -47,7 +51,7 @@ body {
 
 .floater {
   width: 100vw;
-  height: 30vw;
+  height: 20vw;
   position: fixed;
   bottom: 0;
   background-color: #EEE;
@@ -55,7 +59,7 @@ body {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  box-shadow: 0 0 15vw 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8vw 0 rgba(0, 0, 0, 0.1);
 }
 
 .floater > p {
@@ -80,6 +84,7 @@ body {
 
   .wrapper > img {
     width: 30vw;
+    border-radius: 1vw;
   }
 
   .wrapper > .desc {
