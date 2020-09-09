@@ -15,10 +15,10 @@ body {
 }
 
 .wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 2vw;
   margin: 5vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   padding-bottom: 5vw;
 }
 
@@ -27,6 +27,7 @@ body {
 }
 
 .wrapper > .desc > h1 {
+  line-height: 0.9em;
   font-family: 'Architects Daughter', cursive;
   font-size: 5em;
   margin-top: 0.5em;
@@ -37,7 +38,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 2em;
   margin-top: 0.5em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .wrapper > .desc > a {
@@ -73,22 +74,26 @@ body {
     margin-bottom: 5vw;
   }
 
-  .wrapper > .desc > h1 {
-    font-size: 3.5em;
-  }
-
   .wrapper {
+    grid-template-columns: 1fr 2fr;
     margin: 4vw 16vw;
-    flex-wrap: nowrap;
-  }
-
-  .wrapper > img {
-    width: 30vw;
-    border-radius: 1vw;
   }
 
   .wrapper > .desc {
-    margin-left: 4vw;
+    align-self: center;
+  }
+
+  .wrapper > .desc > h1 {
+    font-size: 2.5em;
+    margin-top: 0;
+  }
+
+  .wrapper > .desc > p {
+    font-size: 1.5em;
+  }
+
+  .wrapper > img {
+    border-radius: 1vw;
   }
 
   .wrapper > .desc > a {
