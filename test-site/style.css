@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-snap-stop: normal;
+}
+
+.slide {
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  scroll-snap-align: center;
+  scroll-snap-stop: normal;
+}
+
+.slide:nth-child(2) {
+background-color: #222;
+}
