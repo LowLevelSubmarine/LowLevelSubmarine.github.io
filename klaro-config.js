@@ -100,98 +100,27 @@ var klaroConfig = {
             consentNotice: {
                 extraHTML: "<p>test</p>",
             },
+            consentNotice: {
+              description: 'Diese Website sammelt und verarbeitet Ihre Daten für folgenden Zwecke: {purposes}.',
+            },
             consentModal: {
-                description:
-                    'Hier kÃ¶nnen Sie einsehen und anpassen, welche Information wir Ã¼ber Sie ' +
-                    'sammeln. EintrÃ¤ge die als "Beispiel" gekennzeichnet sind dienen lediglich ' +
-                    'zu Demonstrationszwecken und werden nicht wirklich verwendet.',
+                title: 'Informationen, die diese Seite sammelt',
+                description: 'Hier können Sie einsehen und anpassen, welche Informationen diese Seite über Sie sammelt.',
+                privacyPolicy: {
+                    name: 'Datenschutzerklärung',
+                    text: 'Um mehr zu erfahren, lesen Sie bitte die {privacyPolicy}.',
+                },
             },
-            inlineTracker: {
-                description: 'Beispiel fÃ¼r ein Inline-Tracking Skript',
-            },
-            externalTracker: {
-                description: 'Beispiel fÃ¼r ein externes Tracking Skript',
-            },
-            adsense: {
-                description: 'Anzeigen von Werbeanzeigen (Beispiel)',
-                title: 'Google AdSense Werbezeugs',
-            },
-            matomo: {
-                description: 'Sammeln von Besucherstatistiken',
-            },
-            camera: {
-                description:
-                    'Eine Ãœberwachungskamera (nur ein Beispiel zu IMG-Tags)',
-            },
-            cloudflare: {
-                description: 'Schutz gegen DDoS-Angriffe',
-            },
-            intercom: {
-                description:
-                    'Chat Widget & Sammeln von Besucherstatistiken (nur ein Beispiel)',
-            },
-            mouseflow: {
-                description: 'Echtzeit-Benutzeranalyse (nur ein Beispiel)',
+            acceptSelected: 'Auswahl akzeptieren',
+            googleAnalytics: {
+                description: 'Statistiken zur vebesserung der Benutzererfahrung-',
             },
             googleFonts: {
-                description: 'Web-Schriftarten von Google gehostet',
-            },
-
-            /*
-            You should also define translations for every purpose you define in the 'apps'
-            section.
-            */
-            purposes: {
-                analytics: 'Besucher-Statistiken',
-                security: 'Sicherheit',
-                livechat: 'Live Chat',
-                advertising: 'Anzeigen von Werbung',
-                styling: 'Styling',
-            },
-        },
-        en: {
-            consentModal: {
-                description:
-                    'Here you can see and customize the information that we collect about you. ' +
-                    'Entries marked as "Example" are just for demonstration purposes and are not ' +
-                    'really used on this website.',
-            },
-            inlineTracker: {
-                description: 'Example of an inline tracking script',
-            },
-            externalTracker: {
-                description: 'Example of an external tracking script',
-            },
-            adsense: {
-                description: 'Displaying of advertisements (just an example)',
-                title: 'Google Adsense Advertisement',
-            },
-            matomo: {
-                description: 'Collecting of visitor statistics',
-            },
-            camera: {
-                description:
-                    'A surveillance camera (just an example for an IMG tag)',
-            },
-            cloudflare: {
-                description: 'Protection against DDoS attacks',
-            },
-            intercom: {
-                description:
-                    'Chat widget & collecting of visitor statistics (just an example)',
-            },
-            mouseflow: {
-                description: 'Real-Time user analytics (just an example)',
-            },
-            googleFonts: {
-                description: 'Web fonts hosted by Google',
+                description: 'Benötigte Schriftarten',
             },
             purposes: {
-                analytics: 'Analytics',
-                security: 'Security',
-                livechat: 'Livechat',
-                advertising: 'Advertising',
-                styling: 'Styling',
+                analytics: 'Statistiken',
+                styling: 'Aussehen',
             },
         },
     },
@@ -202,7 +131,7 @@ var klaroConfig = {
     apps: [
 
         {
-            name: 'google-analytics',
+            name: 'googleAnalytics',
             default: true,
             title: 'Google Analytics',
             purposes: ['analytics'],
@@ -212,7 +141,7 @@ var klaroConfig = {
         },
 
         {
-            name: 'google-fonts',
+            name: 'googleFonts',
             default: true,
             title: 'Google Fonts',
             purposes: ['styling'],
@@ -231,30 +160,6 @@ var klaroConfig = {
             optOut: false,
             onlyOnce: true,
         },*/
-
-        /*
-        You can also set a custom expiration time for the Klaro cookie. By default, it
-        will expire after 30 days. Only relevant if 'storageMethod' is set to 'cookie'.
-        */
     ],
-
-    /*
-    You can define an optional callback function that will be called each time the
-    consent state for any given app changes. The consent value will be passed as the
-    first parameter to the function (true=consented). The `app` config will be
-    passed as the second parameter.
-    */
-    callback: function(consent, app) {
-
-        /*
-        You can define an optional callback function that will be called each time the
-        consent state for any given app changes. The consent value will be passed as the
-        first parameter to the function (true=consented). The `app` config will be
-        passed as the second parameter.
-        */
-        console.log(
-            'User consent for app ' + app.name + ': consent=' + consent
-        );
-    },
 
 };
