@@ -11,6 +11,10 @@ body {
   background-color: #202020;
 }
 
+.section {
+  height: 100vh;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 3fr 20fr 3fr 1fr;

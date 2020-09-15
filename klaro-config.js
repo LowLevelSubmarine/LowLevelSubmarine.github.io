@@ -200,150 +200,42 @@ var klaroConfig = {
     Here you specify the third-party apps that Klaro will manage for you.
     */
     apps: [
+
         {
-
-            /*
-            Each app must have a unique name. Klaro will look for HTML elements with a
-            matching 'data-name' attribute to identify elements that belong to this app.
-            */
             name: 'google-analytics',
-
-            /*
-            If 'default' is set to 'true', the app will be enabled by default. This
-            overrides the global 'default' setting.
-            */
             default: true,
-
-            /*
-            The title of you app as listed in the consent modal. You can also specify
-            translated app titles in the 'translations' section. In that case, you need to
-            leave the title attribute here unspecified.
-            */
             title: 'Google Analytics',
-
-            /*
-            The purpose(s) of this app that will be listed on the consent notice. Do not
-            forget to add translations for all purposes you list here.
-            */
             purposes: ['analytics'],
-
-            cookies: [
-                /*
-                you an either only provide a cookie name or regular expression (regex) or a list
-                consisting of a name or regex, a path and a cookie domain. Providing a path and
-                domain is necessary if you have apps that set cookies for a path that is not
-                "/", or a domain that is not the current domain. If you do not set these values
-                properly, the cookie can't be deleted by Klaro, as there is no way to access the
-                path or domain of a cookie in JS. Notice that it is not possible to delete
-                cookies that were set on a third-party domain, or cookies that have the HTTPOnly
-                attribute: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#new-
-                cookie_domain
-                */
-
-                /*
-                This rule will match cookies that contain the string '_pk_' and that are set on
-                the path '/' and the domain 'klaro.kiprotect.com'
-                */
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-
-                /*
-                Same as above, only for the 'localhost' domain
-                */
-                [/^_pk_.*$/, '/', 'localhost'],
-
-                /*
-                This rule will match all cookies named 'piwik_ignore' that are set on the path
-                '/' on the current domain
-                */
-                'piwik_ignore',
-            ],
-
-            /*
-            You can define an optional callback function that will be called each time the
-            consent state for the given app changes. The consent value will be passed as the
-            first parameter to the function (true=consented). The `app` config will be
-            passed as the second parameter.
-            */
-            callback: function(consent, app) {
-                console.log(
-                    'User consent for app ' + app.name + ': consent=' + consent
-                );
-            },
-
-            /*
-            If 'required' is set to 'true', Klaro will not allow this app to be disabled by
-            the user. Use this for apps that are always required for your website to
-            function (e.g. shopping cart cookies).
-            */
+            cookies: ['_ga', '_gid', '_gat', 'AMP_TOKEN', '_gac_[\W\w]+'],
             required: false,
-
-            /*
-            If 'optOut' is set to 'true', Klaro will load this app even before the user has
-            given explicit consent. We strongly advise against this.
-            */
             optOut: false,
-
-            /*
-            If 'onlyOnce' is set to 'true', the app will only be executed once regardless
-            how often the user toggles it on and off. This is relevant e.g. for tracking
-            scripts that would generate new page view events every time Klaro disables and
-            re-enables them due to a consent change by the user.
-            */
-            onlyOnce: true,
         },
+
+        {
+            name: 'google-fonts',
+            default: true,
+            title: 'Google Fonts',
+            purposes: ['styling'],
+            cookies: [],
+            required: true,
+            optOut: false,
+        },
+
+        /*{
+            name: 'google-analytics',
+            default: true,
+            title: 'Google Analytics',
+            purposes: ['analytics'],
+            cookies: ['piwik_ignore',],
+            required: false,
+            optOut: false,
+            onlyOnce: true,
+        },*/
 
         /*
         You can also set a custom expiration time for the Klaro cookie. By default, it
         will expire after 30 days. Only relevant if 'storageMethod' is set to 'cookie'.
         */
-        {
-            name: 'inlineTracker',
-            title: 'Inline Tracker',
-            purposes: ['analytics'],
-            cookies: ['inline-tracker'],
-            optOut: false,
-        },
-        {
-            name: 'externalTracker',
-            title: 'External Tracker',
-            purposes: ['analytics', 'security'],
-            cookies: ['external-tracker'],
-        },
-        {
-            name: 'intercom',
-            title: 'Intercom',
-            default: true,
-            purposes: ['livechat'],
-        },
-        {
-            name: 'mouseflow',
-            title: 'Mouseflow',
-            purposes: ['analytics'],
-        },
-        {
-            name: 'adsense',
-            /*
-            You can also set a custom expiration time for the Klaro cookie. By default, it
-            will expire after 30 days. Only relevant if 'storageMethod' is set to 'cookie'.
-            */
-            purposes: ['advertising'],
-        },
-        {
-            name: 'camera',
-            title: 'Surveillance Camera',
-            purposes: ['security'],
-        },
-        {
-            name: 'googleFonts',
-            title: 'Google Fonts',
-            purposes: ['styling'],
-        },
-        {
-            name: 'cloudflare',
-            title: 'Cloudflare',
-            purposes: ['security'],
-            required: true,
-        },
     ],
 
     /*
