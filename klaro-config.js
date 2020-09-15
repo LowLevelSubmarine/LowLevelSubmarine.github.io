@@ -102,6 +102,7 @@ var klaroConfig = {
             },
             consentNotice: {
               description: 'Diese Website sammelt und verarbeitet Ihre Daten für folgenden Zwecke: {purposes}.',
+              changeDescription: 'Seit Ihrem letzten Besuch gab es Änderungen, bitte aktualisieren Sie Ihre Zustimmung.',
             },
             consentModal: {
                 title: 'Informationen, die diese Seite sammelt',
