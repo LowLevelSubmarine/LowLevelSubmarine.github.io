@@ -17,6 +17,8 @@ body {
   width: 100%;
   overflow-y: scroll;
 	scroll-snap-type: y mandatory;
+  overscroll-behavior: none;
+  scroll-snap-stop: always;
 }
 
 #home, #whoami, #works {
