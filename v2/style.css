@@ -12,6 +12,10 @@ body {
   overflow: hidden;
 }
 
+h2 {
+  line-height: 0.9em;
+}
+
 #scroller {
   height: 100vh;
   width: 100%;
@@ -41,7 +45,7 @@ body {
   width: 100%;
 }
 
-.page > .content {
+.page > .wrapper {
   grid-column: 3;
   grid-row: 3;
 }
@@ -50,8 +54,6 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   grid-column: 3;
   grid-row: 3;
 }
@@ -72,12 +74,47 @@ body {
   transform: scale(0.85) rotate(-4deg);
 }
 
-#content-1 {
+#home .frame {
+  height: 100%;
+}
+
+#home .content {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#content-1 > img {
+#home .content > img {
   width: 100%;
+}
+
+#whoami .wrapper {
+  display: grid;
+}
+
+#whoami .frame {
+  width: 80%;
+  justify-self: center;
+}
+
+#whoami .content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10%;
+}
+
+#whoami .content > .text > h2 {
+  font-size: 4vw;
+}
+
+#whoami .content > .text > p {
+  font-size: 1.5vw;
+  margin-top: 0.5em;
+}
+
+#whoami .content > img {
+  width: 100%;
+  justify-self: end;
+  transform: rotate(-4deg) translateY(-1vw);
 }
