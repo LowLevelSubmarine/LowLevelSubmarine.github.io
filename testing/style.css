@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#id {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#marker {
+  height: 80%;
+  width: 80%;
+  background-color: #789;
+}
