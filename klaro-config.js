@@ -100,98 +100,28 @@ var klaroConfig = {
             consentNotice: {
                 extraHTML: "<p>test</p>",
             },
+            consentNotice: {
+              description: 'Diese Website sammelt und verarbeitet Ihre Daten für folgenden Zwecke: {purposes}.',
+              changeDescription: 'Seit Ihrem letzten Besuch gab es Änderungen, bitte aktualisieren Sie Ihre Zustimmung.',
+            },
             consentModal: {
-                description:
-                    'Hier kÃ¶nnen Sie einsehen und anpassen, welche Information wir Ã¼ber Sie ' +
-                    'sammeln. EintrÃ¤ge die als "Beispiel" gekennzeichnet sind dienen lediglich ' +
-                    'zu Demonstrationszwecken und werden nicht wirklich verwendet.',
+                title: 'Informationen, die diese Seite sammelt',
+                description: 'Hier können Sie einsehen und anpassen, welche Informationen diese Seite über Sie sammelt.',
+                privacyPolicy: {
+                    name: 'Datenschutzerklärung',
+                    text: 'Um mehr zu erfahren, lesen Sie bitte die {privacyPolicy}.',
+                },
             },
-            inlineTracker: {
-                description: 'Beispiel fÃ¼r ein Inline-Tracking Skript',
-            },
-            externalTracker: {
-                description: 'Beispiel fÃ¼r ein externes Tracking Skript',
-            },
-            adsense: {
-                description: 'Anzeigen von Werbeanzeigen (Beispiel)',
-                title: 'Google AdSense Werbezeugs',
-            },
-            matomo: {
-                description: 'Sammeln von Besucherstatistiken',
-            },
-            camera: {
-                description:
-                    'Eine Ãœberwachungskamera (nur ein Beispiel zu IMG-Tags)',
-            },
-            cloudflare: {
-                description: 'Schutz gegen DDoS-Angriffe',
-            },
-            intercom: {
-                description:
-                    'Chat Widget & Sammeln von Besucherstatistiken (nur ein Beispiel)',
-            },
-            mouseflow: {
-                description: 'Echtzeit-Benutzeranalyse (nur ein Beispiel)',
+            acceptSelected: 'Auswahl akzeptieren',
+            googleAnalytics: {
+                description: 'Statistiken zur vebesserung der Benutzererfahrung-',
             },
             googleFonts: {
-                description: 'Web-Schriftarten von Google gehostet',
-            },
-
-            /*
-            You should also define translations for every purpose you define in the 'apps'
-            section.
-            */
-            purposes: {
-                analytics: 'Besucher-Statistiken',
-                security: 'Sicherheit',
-                livechat: 'Live Chat',
-                advertising: 'Anzeigen von Werbung',
-                styling: 'Styling',
-            },
-        },
-        en: {
-            consentModal: {
-                description:
-                    'Here you can see and customize the information that we collect about you. ' +
-                    'Entries marked as "Example" are just for demonstration purposes and are not ' +
-                    'really used on this website.',
-            },
-            inlineTracker: {
-                description: 'Example of an inline tracking script',
-            },
-            externalTracker: {
-                description: 'Example of an external tracking script',
-            },
-            adsense: {
-                description: 'Displaying of advertisements (just an example)',
-                title: 'Google Adsense Advertisement',
-            },
-            matomo: {
-                description: 'Collecting of visitor statistics',
-            },
-            camera: {
-                description:
-                    'A surveillance camera (just an example for an IMG tag)',
-            },
-            cloudflare: {
-                description: 'Protection against DDoS attacks',
-            },
-            intercom: {
-                description:
-                    'Chat widget & collecting of visitor statistics (just an example)',
-            },
-            mouseflow: {
-                description: 'Real-Time user analytics (just an example)',
-            },
-            googleFonts: {
-                description: 'Web fonts hosted by Google',
+                description: 'Benötigte Schriftarten',
             },
             purposes: {
-                analytics: 'Analytics',
-                security: 'Security',
-                livechat: 'Livechat',
-                advertising: 'Advertising',
-                styling: 'Styling',
+                analytics: 'Statistiken',
+                styling: 'Aussehen',
             },
         },
     },
@@ -200,169 +130,37 @@ var klaroConfig = {
     Here you specify the third-party apps that Klaro will manage for you.
     */
     apps: [
+
         {
-
-            /*
-            Each app must have a unique name. Klaro will look for HTML elements with a
-            matching 'data-name' attribute to identify elements that belong to this app.
-            */
-            name: 'google-analytics',
-
-            /*
-            If 'default' is set to 'true', the app will be enabled by default. This
-            overrides the global 'default' setting.
-            */
+            name: 'googleAnalytics',
             default: true,
-
-            /*
-            The title of you app as listed in the consent modal. You can also specify
-            translated app titles in the 'translations' section. In that case, you need to
-            leave the title attribute here unspecified.
-            */
             title: 'Google Analytics',
-
-            /*
-            The purpose(s) of this app that will be listed on the consent notice. Do not
-            forget to add translations for all purposes you list here.
-            */
             purposes: ['analytics'],
-
-            cookies: [
-                /*
-                you an either only provide a cookie name or regular expression (regex) or a list
-                consisting of a name or regex, a path and a cookie domain. Providing a path and
-                domain is necessary if you have apps that set cookies for a path that is not
-                "/", or a domain that is not the current domain. If you do not set these values
-                properly, the cookie can't be deleted by Klaro, as there is no way to access the
-                path or domain of a cookie in JS. Notice that it is not possible to delete
-                cookies that were set on a third-party domain, or cookies that have the HTTPOnly
-                attribute: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#new-
-                cookie_domain
-                */
-
-                /*
-                This rule will match cookies that contain the string '_pk_' and that are set on
-                the path '/' and the domain 'klaro.kiprotect.com'
-                */
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-
-                /*
-                Same as above, only for the 'localhost' domain
-                */
-                [/^_pk_.*$/, '/', 'localhost'],
-
-                /*
-                This rule will match all cookies named 'piwik_ignore' that are set on the path
-                '/' on the current domain
-                */
-                'piwik_ignore',
-            ],
-
-            /*
-            You can define an optional callback function that will be called each time the
-            consent state for the given app changes. The consent value will be passed as the
-            first parameter to the function (true=consented). The `app` config will be
-            passed as the second parameter.
-            */
-            callback: function(consent, app) {
-                console.log(
-                    'User consent for app ' + app.name + ': consent=' + consent
-                );
-            },
-
-            /*
-            If 'required' is set to 'true', Klaro will not allow this app to be disabled by
-            the user. Use this for apps that are always required for your website to
-            function (e.g. shopping cart cookies).
-            */
+            cookies: ['_ga', '_gid', '_gat', 'AMP_TOKEN', '_gac_[\W\w]+'],
             required: false,
-
-            /*
-            If 'optOut' is set to 'true', Klaro will load this app even before the user has
-            given explicit consent. We strongly advise against this.
-            */
-            optOut: false,
-
-            /*
-            If 'onlyOnce' is set to 'true', the app will only be executed once regardless
-            how often the user toggles it on and off. This is relevant e.g. for tracking
-            scripts that would generate new page view events every time Klaro disables and
-            re-enables them due to a consent change by the user.
-            */
-            onlyOnce: true,
-        },
-
-        /*
-        You can also set a custom expiration time for the Klaro cookie. By default, it
-        will expire after 30 days. Only relevant if 'storageMethod' is set to 'cookie'.
-        */
-        {
-            name: 'inlineTracker',
-            title: 'Inline Tracker',
-            purposes: ['analytics'],
-            cookies: ['inline-tracker'],
             optOut: false,
         },
-        {
-            name: 'externalTracker',
-            title: 'External Tracker',
-            purposes: ['analytics', 'security'],
-            cookies: ['external-tracker'],
-        },
-        {
-            name: 'intercom',
-            title: 'Intercom',
-            default: true,
-            purposes: ['livechat'],
-        },
-        {
-            name: 'mouseflow',
-            title: 'Mouseflow',
-            purposes: ['analytics'],
-        },
-        {
-            name: 'adsense',
-            /*
-            You can also set a custom expiration time for the Klaro cookie. By default, it
-            will expire after 30 days. Only relevant if 'storageMethod' is set to 'cookie'.
-            */
-            purposes: ['advertising'],
-        },
-        {
-            name: 'camera',
-            title: 'Surveillance Camera',
-            purposes: ['security'],
-        },
+
         {
             name: 'googleFonts',
+            default: true,
             title: 'Google Fonts',
             purposes: ['styling'],
-        },
-        {
-            name: 'cloudflare',
-            title: 'Cloudflare',
-            purposes: ['security'],
+            cookies: [],
             required: true,
+            optOut: false,
         },
+
+        /*{
+            name: 'google-analytics',
+            default: true,
+            title: 'Google Analytics',
+            purposes: ['analytics'],
+            cookies: ['piwik_ignore',],
+            required: false,
+            optOut: false,
+            onlyOnce: true,
+        },*/
     ],
-
-    /*
-    You can define an optional callback function that will be called each time the
-    consent state for any given app changes. The consent value will be passed as the
-    first parameter to the function (true=consented). The `app` config will be
-    passed as the second parameter.
-    */
-    callback: function(consent, app) {
-
-        /*
-        You can define an optional callback function that will be called each time the
-        consent state for any given app changes. The consent value will be passed as the
-        first parameter to the function (true=consented). The `app` config will be
-        passed as the second parameter.
-        */
-        console.log(
-            'User consent for app ' + app.name + ': consent=' + consent
-        );
-    },
 
 };

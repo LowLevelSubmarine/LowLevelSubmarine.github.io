@@ -8,10 +8,7 @@
     <meta name="author" content="Florian Weichert">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="fullpage/fullpage.min.css" />
     <script type="text/javascript" src="rellax.min.js"></script>
-    <script type="text/javascript" src="fullpage/fullpage.min.js"></script>
     <script type='application/ld+json'>
       {
         "@context": "http://www.schema.org",
@@ -31,27 +28,48 @@
     </script>
   </head>
   <body lang="de">
-    <div id="fullpage" class="wrapper">
-      <div class="section">
-        <div class="container">
+    <div id="scroller">
+      <div id="home" class="page">
+        <div class="wrapper">
           <div class="frame">
             <div class="background"></div>
-            <div class="content rellax" id="content-1" data-rellax-speed="10" data-rellax-percentage="0.6"><img src="images/logo.svg"></div>
+            <div class="content rellax" data-rellax-speed="10" data-rellax-percentage="0.5"><img src="images/logo.svg"></div>
           </div>
         </div>
       </div>
-      <div class="section">
+      <div id="whoami" class="page">
+        <div class="wrapper">
+          <div class="frame">
+            <div class="background"></div>
+            <div class="content">
+              <div class="text rellax" data-rellax-speed="10" data-rellax-percentage="0.5">
+                <h2>
+                  Wer bist du denn?
+                </h2>
+                <p>
+                  Ich bin 19 Jahre alt, gestaltungstechnischer Assistent in Medien & Kommunikation und aktuell Azubi zum Mediengestalter in Digital & Print.
+                </p>
+                <p>
+                  Fotografie, Film, Print, und Webdesign.
+                </p>
+              </div>
+              <img src="images/me.jpg" class="rellax" data-rellax-speed="20" data-rellax-percentage="0.5">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="works" class="page">
+        <div class="wrapper">
+          <div class="frame">
+            <div class="background"></div>
+            <div class="content rellax" data-rellax-speed="10" data-rellax-percentage="0.5"></div>
+          </div>
+        </div>
       </div>
     </div>
     <script>
-      var rellax = new Rellax('.rellax');
-      new fullpage('#fullpage', {
-      	//options here
-      	autoScrolling:true,
-        scrollBar:true,
-        dragAndMove:true,
-        scrollingSpeed: 1000,
-        navigation: true,
+      var rellax = new Rellax('.rellax', {
+        wrapper: '#scroller',
       });
     </script>
   </body>
