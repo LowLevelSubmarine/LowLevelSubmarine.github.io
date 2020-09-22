@@ -7,7 +7,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-body, html {
+html, body {
   height: 100%;
 }
 
@@ -16,12 +16,19 @@ body, html {
   overflow-y: scroll;
   overscroll-behavior: none;
   scroll-snap-type: y mandatory;
-  scroll-snap-stop: normal;
+  scroll-snap-stop: always;
+}
+
+#home, #whoami {
+  height: 100%;
+}
+
+#mywork {
+  height: 300%;
 }
 
 .page {
   scroll-snap-align: start;
-  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
