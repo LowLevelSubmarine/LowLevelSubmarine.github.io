@@ -120,8 +120,12 @@ h2 {
   margin-top: 0.5em;
 }
 
-#whoami .content > img {
+#whoami .content > .img-holder {
   width: 100%;
   justify-self: end;
-  transform: rotate(-4deg) translateY(-1vw);
+  transform: rotate(-4deg) translateY(-2vw);
+}
+
+#whoami .content > .img-holder > img {
+  width: 100%;
 }
